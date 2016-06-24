@@ -61,7 +61,12 @@
   networking = {
     connman.enable = true;
     hostName = "nixos";
-    wireless.enable = true;
+    wireless = {
+      enable = true;
+      networks = {
+        yama = {};
+      };
+    };
   };
 
   nixpkgs.config = {
