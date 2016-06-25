@@ -16,9 +16,11 @@
     dropbox
     emacs25pre
     git
+    glxinfo
     gnumake
     google-chrome
     haskellPackages.stack
+    npm2nix
     openjdk8
     primus
     silver-searcher
@@ -61,6 +63,10 @@
   networking = {
     connman.enable = true;
     hostName = "nixos";
+    nameservers = [
+      "8.8.8.8"
+      "8.8.4.4"
+    ];
     wireless = {
       enable = true;
       networks = {
@@ -78,22 +84,30 @@
     wheelNeedsPassword = false;
   };
 
-  services.xserver = {
-    enable = true;
-    desktopManager.gnome3.enable = true;
-    layout = "gb";
-    synaptics = {
-      enable = true;
-      twoFingerScroll = true;
+  services = {
+    journald = {
+      extraConfig = ''
+        SystemMaxUse=50M
+      '';
     };
-    videoDrivers = [ "intel" "nvidiaBeta" ];
-    displayManager = {
-      auto = {
+    xserver = {
+      enable = true;
+      desktopManager.gnome3.enable = true;
+      layout = "gb";
+      synaptics = {
         enable = true;
-        user = "yamafaktory";
+        twoFingerScroll = true;
+      };
+      videoDrivers = [ "intel" "nvidiaBeta" ];
+      displayManager = {
+        auto = {
+          enable = true;
+          user = "yamafaktory";
+        };
       };
     };
   };
+  
 
   system.stateVersion = "16.03";
 
