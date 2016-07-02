@@ -15,11 +15,14 @@
   environment.systemPackages = with pkgs; [
     dropbox
     emacs25pre
+    gimp
     git
     glxinfo
     gnumake
     google-chrome
     haskellPackages.stack
+    nix-zsh-completions
+    nodejs
     npm2nix
     openjdk8
     primus
@@ -107,9 +110,30 @@
       };
     };
   };
-  
 
   system.stateVersion = "16.03";
+
+  systemd = {
+    services.emacs.enable = true;
+    user.services.emacs = {
+      description = "Emacs Daemon";
+      environment = {
+        GTK_DATA_PREFIX = config.system.path;
+        SSH_AUTH_SOCK = "%t/ssh-agent";
+        GTK_PATH = "${config.system.path}/lib/gtk-3.0:${config.system.path}/lib/gtk-2.0";
+        NIX_PROFILES = "${pkgs.lib.concatStringsSep " " config.environment.profiles}";
+        TERMINFO_DIRS = "/run/current-system/sw/share/terminfo";
+        ASPELL_CONF = "dict-dir /run/current-system/sw/lib/aspell";
+      };
+      serviceConfig = {
+        Type = "forking";
+        ExecStart = "${pkgs.emacs}/bin/emacsemacs-25.0.92 --daemon";
+        ExecStop = "${pkgs.emacs}/bin/emacsclient --eval (kill-emacs)";
+        Restart = "always";
+      };
+      wantedBy = [ "default.target" ];
+    };
+  };
 
   time.timeZone = "Europe/Paris";
 
