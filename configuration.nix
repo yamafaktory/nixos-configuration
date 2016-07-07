@@ -156,5 +156,8 @@
     shell = "/run/current-system/sw/bin/zsh";
   };
 
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    socketActivation = false;
+  };
 }
