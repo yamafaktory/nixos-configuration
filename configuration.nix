@@ -84,6 +84,7 @@
           enable = true;
           user = "yamafaktory";
         };
+        sddm.autoNumlock = true;
       };
     };
   };
