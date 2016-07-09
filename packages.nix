@@ -4,6 +4,7 @@
 
 {
   environment.systemPackages = with pkgs; [
+    curl
     dropbox
     emacs25pre
     gimp
