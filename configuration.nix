@@ -52,7 +52,12 @@
       "8.8.8.8"
       "8.8.4.4"
     ];
-    wireless.enable = true;
+    wireless = {
+      enable = true;
+      networks = {
+        yama = {};
+      };
+    };
   };
 
   nixpkgs.config = {
