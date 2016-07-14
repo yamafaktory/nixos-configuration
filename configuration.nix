@@ -94,7 +94,13 @@
     };
   };
 
-  system.stateVersion = "16.03";
+  system = {
+    autoUpgrade = {
+      channel= "https://nixos.org/channels/nixos-16.03";
+      enable = true;
+    };
+    stateVersion = "16.03";
+  };
 
   systemd = {
     services.emacs.enable = true;
@@ -110,7 +116,7 @@
       };
       serviceConfig = {
         Type = "forking";
-        ExecStart = "${pkgs.emacs}/bin/emacsemacs-25.0.92 --daemon";
+        ExecStart = "${pkgs.emacs}/bin/emacs-25pre --daemon";
         ExecStop = "${pkgs.emacs}/bin/emacsclient --eval (kill-emacs)";
         Restart = "always";
       };
