@@ -116,7 +116,7 @@
       };
       serviceConfig = {
         Type = "forking";
-        ExecStart = "${pkgs.emacs}/bin/emacs-25pre --daemon";
+        ExecStart = "${pkgs.emacs}/bin/emacs --daemon";
         ExecStop = "${pkgs.emacs}/bin/emacsclient --eval (kill-emacs)";
         Restart = "always";
       };
