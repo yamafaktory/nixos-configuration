@@ -129,6 +129,5 @@
   virtualisation.docker = {
     enable = true;
     socketActivation = false;
-    storageDriver = "btrfs";
   };
 }
