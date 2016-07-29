@@ -5,6 +5,8 @@
 {
   environment.etc = {
     gitconfig.text = ''
+      [core]
+        editor = emacs
       [user]
         email = yamafaktory@gmail.com
         name = yamafaktory
