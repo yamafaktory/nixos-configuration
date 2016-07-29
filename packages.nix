@@ -4,6 +4,7 @@
 
 {
   environment.systemPackages = with pkgs; [
+    chromium
     curl
     dropbox
     emacs25pre
@@ -11,8 +12,9 @@
     git
     glxinfo
     gnumake
-    google-chrome
-    haskellPackages.stack
+    htop
+    stack
+    nix-repl
     nix-zsh-completions
     nodejs
     npm2nix
@@ -20,6 +22,7 @@
     primus
     silver-searcher
     skype
+    tree
     unrar
     vlc
     weechat

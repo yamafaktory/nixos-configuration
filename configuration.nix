@@ -6,6 +6,8 @@
   imports = [
     # Add hardware scan configuration.
     ./hardware-configuration.nix
+    # Add environment settings.
+    ./environment.nix
     # Add hosts.
     ./hosts.nix
     # Add packages.
@@ -29,6 +31,7 @@
 
   hardware = {
     bumblebee.enable = true;
+    cpu.intel.updateMicrocode = true;
     opengl = {
       driSupport32Bit = true;
       extraPackages = with pkgs; [ vaapiIntel ];
@@ -83,7 +86,7 @@
         enable = true;
         twoFingerScroll = true;
       };
-      videoDrivers = [ "intel" "nvidiaBeta" ];
+      videoDrivers = [ "intel" "nvidia" ];
       displayManager = {
         auto = {
           enable = true;
