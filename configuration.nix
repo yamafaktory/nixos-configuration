@@ -86,7 +86,7 @@
         enable = true;
         twoFingerScroll = true;
       };
-      videoDrivers = [ "intel" "nvidia" ];
+      videoDrivers = [ "intel" "nvidiaBeta" ];
       displayManager = {
         auto = {
           enable = true;

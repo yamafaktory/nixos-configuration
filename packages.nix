@@ -13,7 +13,6 @@
     glxinfo
     gnumake
     htop
-    stack
     nix-repl
     nix-zsh-completions
     nodejs
@@ -22,6 +21,7 @@
     primus
     silver-searcher
     skype
+    stack
     tree
     unrar
     vlc
