@@ -4,7 +4,6 @@
 
 {
   environment.systemPackages = with pkgs; [
-    chromium
     curl
     dropbox
     emacs25pre
@@ -12,6 +11,7 @@
     git
     glxinfo
     gnumake
+    google-chrome
     htop
     nix-repl
     nix-zsh-completions
