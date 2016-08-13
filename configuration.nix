@@ -131,6 +131,6 @@
 
   virtualisation.docker = {
     enable = true;
-    socketActivation = false;
+    socketActivation = true;
   };
 }
