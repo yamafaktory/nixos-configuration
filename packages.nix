@@ -4,6 +4,7 @@
 
 {
   environment.systemPackages = with pkgs; [
+    cabal2nix
     curl
     dropbox
     emacs25pre
@@ -15,7 +16,6 @@
     htop
     nix-repl
     nix-zsh-completions
-    nodejs
     npm2nix
     openjdk8
     primus

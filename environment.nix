@@ -12,14 +12,8 @@
           email = yamafaktory@gmail.com
           name = yamafaktory
       '';
-
-      "stack/config.yaml".text = ''
-        nix:
-          enable: true
-          packages: [ ncurses ]
-      '';
     };
-    variables ={
+    variables = {
       BROWSER = "google-chrome-stable";
     };
   };
