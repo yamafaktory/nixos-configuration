@@ -30,7 +30,10 @@
   };
 
   hardware = {
-    bumblebee.enable = true;
+    bumblebee = {
+      connectDisplay = true;
+      enable = true;
+    };
     cpu.intel.updateMicrocode = true;
     opengl = {
       driSupport32Bit = true;
