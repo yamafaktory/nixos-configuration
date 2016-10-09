@@ -18,7 +18,7 @@
 
   boot.loader = {
     efi.canTouchEfiVariables = true;
-    gummiboot.enable = true;
+    systemd-boot.enable = true;
   };
 
   fonts = {
@@ -63,6 +63,13 @@
     };
   };
 
+  nix = {
+    extraOptions = ''
+      build-cores = 4
+    '';
+    maxJobs = 4;
+  };
+
   nixpkgs.config = {
     allowUnfree = true;
   };
@@ -79,52 +86,28 @@
       '';
     };
     xserver = {
-      enable = true;
-      desktopManager.gnome3.enable = true;
-      layout = "gb";
-      synaptics = {
-        enable = true;
-        twoFingerScroll = true;
+      desktopManager = {
+        default = "gnome3";
+        gnome3.enable = true;
       };
-      videoDrivers = [ "intel" "nvidiaBeta" ];
       displayManager = {
-        auto = {
-          enable = true;
-          user = "yamafaktory";
-        };
+        gdm.enable = true;
         sddm.autoNumlock = true;
+        slim.defaultUser = "yamafaktory";
       };
+      enable = true;
+      layout = "gb";
+      multitouch.enable = true;
+      videoDrivers = [ "intel nvidia" ];
     };
   };
 
   system = {
     autoUpgrade = {
-      channel= "https://nixos.org/channels/nixos-16.03";
+      channel= "https://nixos.org/channels/nixos-16.09";
       enable = true;
     };
-    stateVersion = "16.03";
-  };
-
-  systemd = {
-    services.emacs.enable = true;
-    user.services.emacs = {
-      description = "Emacs Daemon";
-      environment = {
-        GTK_DATA_PREFIX = config.system.path;
-        SSH_AUTH_SOCK = "%t/ssh-agent";
-        GTK_PATH = "${config.system.path}/lib/gtk-3.0:${config.system.path}/lib/gtk-2.0";
-        NIX_PROFILES = "${pkgs.lib.concatStringsSep " " config.environment.profiles}";
-        TERMINFO_DIRS = "/run/current-system/sw/share/terminfo";
-        ASPELL_CONF = "dict-dir /run/current-system/sw/lib/aspell";
-      };
-      serviceConfig = {
-        Type = "forking";
-        ExecStart = "${pkgs.emacs}/bin/emacs --daemon";
-        ExecStop = "${pkgs.emacs}/bin/emacsclient --eval (kill-emacs)";
-        Restart = "always";
-      };
-      wantedBy = [ "default.target" ];
-    };
+    stateVersion = "16.09";
   };
 
   time.timeZone = "Europe/Paris";

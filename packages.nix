@@ -7,7 +7,7 @@
     cabal2nix
     curl
     dropbox
-    emacs25pre
+    emacs
     gimp
     git
     glxinfo
