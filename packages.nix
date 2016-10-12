@@ -21,6 +21,7 @@
     primus
     silver-searcher
     skype
+    spotify
     stack
     tree
     unrar
