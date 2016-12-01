@@ -75,10 +75,6 @@
 
   nixpkgs.config = {
     allowUnfree = true;
-    chromium = {
-      enablePepperPDF = true;
-      # enableWideVine = true;
-     };
   };
 
   security.sudo = {

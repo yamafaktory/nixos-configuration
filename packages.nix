@@ -5,7 +5,6 @@
 {
   environment.systemPackages = with pkgs; [
     cabal2nix
-    chromium
     curl
     dropbox
     emacs
@@ -14,6 +13,7 @@
     git
     glxinfo
     gnumake
+    google-chrome
     htop
     nix-repl
     nix-zsh-completions
